@@ -48,8 +48,7 @@ public class TP4_java {
         }
     }
 
-    public static void ejercicio2 (Scanner sc) {
-       
+    public static void ejercicio2 (Scanner sc) { 
         // Pedir los valores X e Y
         System.out.print("Ingrese el valor de X: ");
         int X = sc.nextInt();
