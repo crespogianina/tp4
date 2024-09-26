@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class TP4_java {
@@ -51,37 +49,74 @@ public class TP4_java {
     }
 
     public static void ejercicio2 (Scanner sc) {
-        System.out.println("Ingrese el valor que corresponde a X: ");
-        int x = sc.nextInt();
+       
+        // Pedir los valores X e Y
+        System.out.print("Ingrese el valor de X: ");
+        int X = sc.nextInt();
+        System.out.print("Ingrese el valor de Y: ");
+        int Y = sc.nextInt();
 
-        System.out.println("Ingrese el numero que corresponde a Y: ");
-        int y = sc.nextInt();
-
-        int [][] primerArray = new int[x][y];
-        for(int i = 0; i < primerArray.length; i++){
-            for(int j = 0; j < primerArray[0].length; j++) {
-                System.out.println("ingrese el numero que va en la posición [" + i +"]"+"[" + j +"]"+ "del primer array" );
-                primerArray[i][j] = sc.nextInt();
+        // Crear el primer array [X][Y]
+        int[][] array1 = new int[X][Y];
+        System.out.println("Ingrese los valores para el primer array [X][Y]:");
+        for (int i = 0; i < X; i++) {
+            for (int j = 0; j < Y; j++) {
+                System.out.printf("array1[%d][%d]: ", i, j);
+                array1[i][j] = sc.nextInt();
             }
         }
 
-        int [][] segundoArray = new int[y][x];
-        for(int i = 0; i < segundoArray.length; i++){
-            for(int j = 0; j < segundoArray[0].length; j++) {
-                System.out.println("ingrese el numero que va en la posición [" + i +"]"+"[" + j +"]"+ "del segundo array" );
-                segundoArray[i][j] = sc.nextInt();
+        // Crear el segundo array [Y][X]
+        int[][] array2 = new int[Y][X];
+        System.out.println("Ingrese los valores para el segundo array [Y][X]:");
+        for (int i = 0; i < Y; i++) {
+            for (int j = 0; j < X; j++) {
+                System.out.printf("array2[%d][%d]: ", i, j);
+                array2[i][j] = sc.nextInt();
             }
         }
 
-        int [][] tercerArray = new int[x][y];
-        for(int i = 0; i < tercerArray.length;i++){
-            for( int j = 0; j < tercerArray[0].length; j++) {
-                System.out.println("La multiplicación de la fila de primer array posición [" + i +"]"+"[" + j +"] por la posición [" + j +"]"+"[" + i +"] del segundo array" );
-                tercerArray[i][j] = primerArray[i][j] * segundoArray[j][i];
+        // Crear el tercer array [X][Y] para almacenar el resultado
+        int[][] arrayResultado = new int[X][Y];
+
+        // Realizar la multiplicación de matrices
+        for (int i = 0; i < X; i++) {
+            for (int j = 0; j < Y; j++) {
+                arrayResultado[i][j] = 0; // Inicializar la posición
+                for (int k = 0; k < Y; k++) {
+                    arrayResultado[i][j] += array1[i][k] * array2[k][j];
+                }
             }
         }
 
+        // Mostrar los resultados
+        System.out.println("Primer array [X][Y]:");
+        for (int i = 0; i < X; i++) {
+            for (int j = 0; j < Y; j++) {
+                System.out.print(array1[i][j] + " ");
+            }
+            System.out.println();
+        }
 
+        System.out.println("Segundo array [Y][X]:");
+        for (int i = 0; i < Y; i++) {
+            for (int j = 0; j < X; j++) {
+                System.out.print(array2[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("Resultado de la multiplicación [X][Y]:");
+        for (int i = 0; i < X; i++) {
+            for (int j = 0; j < Y; j++) {
+                System.out.print(arrayResultado[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        // Cerrar el sc
+        sc.close();
+ 
     }
 
     public static void ejercicio4(Scanner sc){
